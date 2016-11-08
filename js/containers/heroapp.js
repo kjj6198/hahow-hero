@@ -28,6 +28,10 @@ class App extends React.Component {
     super(props);
   }
 
+  componentDidUpdate() {
+    
+  }
+
   componentDidMount() {
     this.props.actions.sendInitHeroRequest();
   }
@@ -35,8 +39,10 @@ class App extends React.Component {
   render() {
     const { heros } = this.props.hero;
     const { profile } = this.props;
+    const { isFetching } = this.props.ui;
     return (
       <div>
+        { isFetching === true ? <h1>Loading...</h1> : '' }
         <HeroList 
           heros={heros} 
           actions={this.props.actions}
@@ -44,7 +50,7 @@ class App extends React.Component {
 
         <HeroProfile
           profile={profile}
-          curHeroID={heros.curHeroID}
+          curHeroID={this.props.hero.currentHeroID}
           {...this.props.actions}
         />
       </div>
