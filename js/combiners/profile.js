@@ -47,10 +47,7 @@ export const decreament = (prop) => ({ type: DECREAMENT, payload: prop });
 export function reviseAbilityPointRequest(id, ability) {
 	const body = JSON.stringify(ability);
   return (dispatch) => {
-  	dispatch({
-  		type: SEND_REQUEST
-  	});
-  	dispatch(setCurrentHeroID(id));
+  	dispatch({ type: SEND_REQUEST });
   	fetch(`https://hahow-recruit.herokuapp.com/heroes/${id}/profile`, {
   		headers: {
   			'Accept': 'application/json',
@@ -90,6 +87,7 @@ export function sendProfileRequest(heroID) {
 		dispatch({
 			type: SEND_REQUEST,
 		});
+		dispatch(setCurrentHeroID(heroID));
 
 		fetch(`http://hahow-recruit.herokuapp.com/heroes/${heroID}/profile`)
 		  .then((res) => res.json())
