@@ -1,14 +1,33 @@
 import React from 'react';
 
-import UIVotingButton from '../components/UIVotingButton';
+import UIReviseButton from '../components/UIReviseButton';
 
 export default class HeroProfile extends React.Component {
   static propTypes = {
     profile: React.PropTypes.object,
+    curHeroID: React.PropTypes.string
   };
 
   constructor(props) {
     super(props);
+    this.handleSaveBtnClick = this.handleSaveBtnClick.bind(this);
+  }
+
+  componentDidUpdate() {
+    
+  }
+
+  handleSaveBtnClick(e) {
+    const { reviseAbilityPointRequest, curHeroID } = this.props;
+    reviseAbilityPointRequest(curHeroID, this.props.profile);
+  }
+
+  onPlusClick(e) {
+
+  }
+
+  onMinerClick(e) {
+
   }
 
   render() {
@@ -22,12 +41,25 @@ export default class HeroProfile extends React.Component {
     return (
       <div className="hero-profile">
         <ul>
-        	<li><UIVotingButton title="Str" />{str}</li>
-        	<li><UIVotingButton title="Int" />{int}</li>
-        	<li><UIVotingButton title="Agi" />{agi}</li>
-          <li><UIVotingButton title="Luk" />{luk}</li>
-          <li>{point}</li>
+        	<li>
+            <UIReviseButton title="Str"
+              onPlusClick={this.onPlusClick.bind(this)}
+              onMinerClick={this}
+            />
+            {str}
+          </li>
+        	<li>
+            <UIReviseButton title="Int" />{int}
+          </li>
+        	<li>
+            <UIReviseButton title="Agi" />{agi}
+          </li>
+          <li>
+            <UIReviseButton title="Luk" />{luk}
+          </li>
+          <li>Point: {point}</li>
         </ul>
+        <button onClick={this.handleSaveBtnClick} value="儲存">儲存</button>
       </div>
     );
   }

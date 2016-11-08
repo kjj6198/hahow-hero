@@ -4,7 +4,11 @@ export const RECEIVE_PROFILE = 'profile/receiveProfile';
 export const REVISE_ABILITY_POINT_REQUEST = 'profile/reviseAbilityPointRequest';
 export const REVISE_ABILITY_POINT_SUCCESS = 'profile/reviseAbilityPointSuccess';
 
+export const INCREAMENT = 'profile/increament';
+export const DECREAMENT = 'profile/decreament';
+
 import { SEND_REQUEST, REQUEST_COMPLETED, receiveError } from './UIStore.js';
+import { setCurrentHeroID } from './hero.js';
 
 const initialState = {
 	str: 0,
@@ -17,21 +21,42 @@ const initialState = {
 export default function reducer(state = initialState, action) {
 	switch(action.type) {
 		case RECEIVE_PROFILE:
-			return Object.assign({}, state, action.payload)			
+			return Object.assign({}, state, action.payload);
 	  case REVISE_ABILITY_POINT_SUCCESS:
-	    return Object.assign({}, state, action.payload.ability)
+	    return Object.assign({}, state, action.payload.ability);
+	  case INCREAMENT:
+	  	if(state[action.payload.prop]) {
+	  		state[action.payload.prop] += 1;
+	  	}
+	  	return state;
+	  case DECREAMENT:
+	    if(state[action.payload.prop]) {
+	    	state[action.payload.prop] -= 1;
+	    }
+	    return state;
+	  default: 
+	    return state;
 	}
 
 	return state;
 }
 
+export const increament = (prop) => ({ type: INCREAMENT, payload: prop });
+export const decreament = (prop) => ({ type: DECREAMENT, payload: prop });
+
 export function reviseAbilityPointRequest(id, ability) {
+	const body = JSON.stringify(ability);
   return (dispatch) => {
   	dispatch({
   		type: SEND_REQUEST
   	});
+  	dispatch(setCurrentHeroID(id));
   	fetch(`https://hahow-recruit.herokuapp.com/heroes/${id}/profile`, {
-  		method: 'patch',
+  		headers: {
+  			'Accept': 'application/json',
+		    'Content-Type': 'application/json'
+  		},
+  		method: 'PATCH',
   		body: JSON.stringify(ability)
   	})
   	.then((res) => {

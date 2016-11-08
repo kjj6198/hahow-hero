@@ -42,7 +42,11 @@ class App extends React.Component {
           actions={this.props.actions}
         />
 
-        <HeroProfile profile={profile} />
+        <HeroProfile
+          profile={profile}
+          curHeroID={heros.curHeroID}
+          {...this.props.actions}
+        />
       </div>
     );
   }
