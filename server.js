@@ -30,8 +30,8 @@ const wdm = webpackDevMiddleware(compiler, {
 app.use(wdm);
 
 app.use(webpackHotMiddleware(compiler));
-
-const server = app.listen(PORT, 'localhost', err => {
+app.use(express.static('styles'));
+const server = app.listen(PORT, 'localhost', (err) => {
   if (err) {
     console.error(err);
     return;
@@ -43,6 +43,8 @@ const server = app.listen(PORT, 'localhost', err => {
 app.get('*', function(req, res) {
   res.sendFile(__dirname + '/index.html');
 });
+
+
 
 process.on('SIGTERM', () => {
   console.log('Stopping dev server');

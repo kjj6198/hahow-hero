@@ -7,6 +7,7 @@ import * as profileActions from '../combiners/profile.js';
 import * as UIActions from '../combiners/UIStore.js';
 
 import HeroList from '../components/HeroList.js';
+import HeroProfile from '../components/HeroProfile.js';
 
 function filterAction(actions) {
   const result = {};
@@ -33,8 +34,16 @@ class App extends React.Component {
 
   render() {
     const { heros } = this.props.hero;
+    const { profile } = this.props;
     return (
-      <HeroList heros={heros} actions={this.props.actions}/>
+      <div>
+        <HeroList 
+          heros={heros} 
+          actions={this.props.actions}
+        />
+
+        <HeroProfile profile={profile} />
+      </div>
     );
   }
 }

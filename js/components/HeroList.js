@@ -12,7 +12,6 @@ export default class HeroList extends React.Component {
     
   }
 
-
   renderHeroCard() {
     const { heros } = this.props;
     const { sendProfileRequest } = this.props.actions;

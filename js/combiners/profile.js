@@ -17,7 +17,6 @@ const initialState = {
 export default function reducer(state = initialState, action) {
 	switch(action.type) {
 		case RECEIVE_PROFILE:
-			console.log(action);
 			return Object.assign({}, state, action.payload)			
 	  case REVISE_ABILITY_POINT_SUCCESS:
 	    return Object.assign({}, state, action.payload.ability)
