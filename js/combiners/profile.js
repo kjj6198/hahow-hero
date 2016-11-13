@@ -25,15 +25,15 @@ export default function reducer(state = initialState, action) {
 	  case REVISE_ABILITY_POINT_SUCCESS:
 	    return Object.assign({}, state, action.payload.ability);
 	  case INCREAMENT:
-	  	if(state[action.payload.prop]) {
-	  		state[action.payload.prop] += 1;
-	  	}
-	  	return state;
 	  case DECREAMENT:
-	    if(state[action.payload.prop]) {
-	    	state[action.payload.prop] -= 1;
-	    }
-	    return state;
+	  	const originState = state;
+	  	console.log(originState, state, action.type);
+	  	if (action.type === INCREAMENT && originState[action.payload]) {
+	  		originState[action.payload] += 1;
+	  	} else if (action.type === DECREAMENT) {
+	  		originState[action.payload] -= 1;
+	  	}
+	  	return Object.assign({}, state, originState);
 	  default: 
 	    return state;
 	}

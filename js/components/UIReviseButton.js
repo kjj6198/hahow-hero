@@ -9,14 +9,25 @@ export default class UIReviseButton extends React.Component {
 
   constructor(props) {
     super(props);
+
+    this.handlePlusClick  = this.handlePlusClick.bind(this);
+    this.handleMinerClick = this.handleMinerClick.bind(this);
   }
+
+  handleMinerClick(e) {
+    this.props.onPlusClick.call(null);
+  }
+
+  handlePlusClick() {
+    this.props.onMinerClick.call(null);
+ }
 
   render() {
     return (
       <div>
-      	
-      	<span>{this.props.title}</span>
-   
+        <button onClick={this.handlePlusClick}> + </button>
+      	<span>{this.props.name}</span>
+        <button onClick={this.handleMinerClick}> - </button>
       </div>
     );
   }

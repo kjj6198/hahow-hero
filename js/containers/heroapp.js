@@ -29,10 +29,9 @@ class App extends React.Component {
   }
 
   componentDidUpdate() {
-    
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.props.actions.sendInitHeroRequest();
   }
 

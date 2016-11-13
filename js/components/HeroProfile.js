@@ -11,23 +11,14 @@ export default class HeroProfile extends React.Component {
   constructor(props) {
     super(props);
     this.handleSaveBtnClick = this.handleSaveBtnClick.bind(this);
-  }
-
-  componentDidUpdate() {
-    
+    this.state = {
+      profileList: ['str', 'int', 'agi', 'luk']
+    };
   }
 
   handleSaveBtnClick(e) {
-    const { reviseAbilityPointRequest, curHeroID } = this.props;
-    reviseAbilityPointRequest(curHeroID, this.props.profile);
-  }
-
-  onPlusClick(e) {
-
-  }
-
-  onMinerClick(e) {
-
+    const { reviseAbilityPointRequest, curHeroID, profile } = this.props;
+    reviseAbilityPointRequest(curHeroID, profile);
   }
 
   render() {
@@ -37,26 +28,26 @@ export default class HeroProfile extends React.Component {
       agi,
       luk,
       point
-    } = this.props.profile
+    } = this.props.profile;
+    const { profile } = this.props;
+    const { increament, decreament } = this.props;
+    const { profileList } = this.state;
+
     return (
       <div className="hero-profile">
         <ul>
-        	<li>
-            <UIReviseButton title="Str"
-              onPlusClick={this.onPlusClick.bind(this)}
-              onMinerClick={this}
-            />
-            {str}
-          </li>
-        	<li>
-            <UIReviseButton title="Int" />{int}
-          </li>
-        	<li>
-            <UIReviseButton title="Agi" />{agi}
-          </li>
-          <li>
-            <UIReviseButton title="Luk" />{luk}
-          </li>
+          {profileList.map((skill, index) => {
+            return (
+              <li key={index}>
+                <UIReviseButton 
+                  title={skill}
+                  onMinerClick={() => increament(skill)}
+                  onPlusClick={() => decreament(skill)}
+                />
+                {profile[skill]}
+              </li>
+            )
+          })}
           <li>Point: {point}</li>
         </ul>
         <button onClick={this.handleSaveBtnClick} value="儲存">儲存</button>
