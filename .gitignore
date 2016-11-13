@@ -1,5 +1,6 @@
 bundle
 .sass-cache
+.map
 bower_components
 
 ### Node ###
