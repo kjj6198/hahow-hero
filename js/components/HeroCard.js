@@ -21,7 +21,7 @@ export default class HeroCard extends React.Component {
   render() {
     const { active } = this.props;
     return (
-      <div className="hero-card">
+      <div className="hero-card" onClick={this.handleClick}>
         <img 
           src={this.props.image}
           className="hero-card__image"

@@ -8,13 +8,23 @@ export default class HeroList extends React.Component {
     super(props);
   }
 
-  componentDidUpdate() {
-    
+  isEmpty() {
+    return this.props.heros.length === 0 ? true : false;
   }
-
   renderHeroCard() {
     const { heros, curHeroID } = this.props;
     const { sendProfileRequest } = this.props.actions;
+    
+
+    if (this.isEmpty()) {
+      return (
+        <div className="fake-card">
+          <div className="fake-card__image"></div>
+          <div className="fake-card__title"></div>
+
+        </div>
+      )
+    }
 
     return heros
       .map((hero, index) => {
@@ -28,8 +38,9 @@ export default class HeroList extends React.Component {
   }
 
   render() {
+    const isEmpty = this.isEmpty();
     return (
-      <div className="hero-list">
+      <div className={'hero-list' +  (isEmpty === true ? ' is-empty' : '')}>
         {this.renderHeroCard()}
       </div>
     );

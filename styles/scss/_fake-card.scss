@@ -1,0 +1,23 @@
+
+@include block(fake-card) {
+	padding: 1em;
+	border: 3px solid #333;
+	background-color: #fff;
+
+	transition: all ease .2s;
+	cursor: pointer;
+
+	@include element(image) {
+		padding-bottom: 30%;
+		margin-bottom: 1rem;
+		width: 50%;
+		background-color: #ccc;
+	}
+
+	@include element(title) {
+		padding-bottom: 1.25rem;
+		width: 100%;
+
+		background-color: #ccc;
+	}
+}

@@ -39,18 +39,19 @@ export default class HeroProfile extends React.Component {
           {profileList.map((skill, index) => {
             return (
               <li key={index}>
+                {profile[skill]}
                 <UIReviseButton 
                   title={skill}
                   onMinerClick={() => profile[skill] > 0 ? decreament(skill) : 'error'}
                   onPlusClick={() => point > 0 ? increament(skill) : 'error'}
                 />
-                {profile[skill]}
+                
               </li>
             )
           })}
           <li>Point: {point}</li>
         </ul>
-        <button onClick={this.handleSaveBtnClick} value="儲存">儲存</button>
+        <button className="btn-primary" onClick={this.handleSaveBtnClick} value="儲存">儲存</button>
       </div>
     );
   }

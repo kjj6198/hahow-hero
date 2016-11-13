@@ -1,0 +1,38 @@
+button {
+	-webkit-appearance: none;
+}
+
+%btn-panel {
+	display: inline-block;
+	padding: 8px 30px;
+	margin-top: 14px;
+	margin-bottom: 14px;
+
+	color: #fff;
+
+	text-transform: uppercase;
+
+	vertical-align: middle;
+	text-align: center;
+
+	font-size: 1em;
+	font-weight: 300;
+	letter-spacing: 2px;
+
+	white-space: nowrap;
+
+	/* remove default border */
+	border: 0;
+	cursor: pointer;
+}
+
+@mixin btn($btn-name) {
+	.btn-#{$btn-name} {
+		@extend %btn-panel;
+		@content;
+	}
+}
+
+@include btn(primary) {
+	background-color: #27cc95;
+}
