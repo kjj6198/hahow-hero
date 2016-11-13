@@ -25,7 +25,9 @@ export default class HeroCard extends React.Component {
           className="hero-card__image"
         />
         
-      	<h3 onClick={this.handleClick} className="hero-card__name">{this.props.name}</h3>
+      	<h3 onClick={this.handleClick} className="hero-card__name">
+          {this.props.name}
+        </h3>
         
       </div>
     );

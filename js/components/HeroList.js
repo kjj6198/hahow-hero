@@ -20,6 +20,7 @@ export default class HeroList extends React.Component {
       .map((hero, index) => {
         return <HeroCard
           {...hero}
+          active={heros.currentHeroID === hero.id ? true : false }
           key={index}
           handleClick={() => sendProfileRequest(hero.id)}
         />

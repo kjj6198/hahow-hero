@@ -41,8 +41,8 @@ export default class HeroProfile extends React.Component {
               <li key={index}>
                 <UIReviseButton 
                   title={skill}
-                  onMinerClick={() => increament(skill)}
-                  onPlusClick={() => decreament(skill)}
+                  onMinerClick={() => profile[skill] > 0 ? decreament(skill) : 'error'}
+                  onPlusClick={() => point > 0 ? increament(skill) : 'error'}
                 />
                 {profile[skill]}
               </li>

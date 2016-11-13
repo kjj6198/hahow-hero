@@ -28,10 +28,12 @@ export default function reducer(state = initialState, action) {
 	  case DECREAMENT:
 	  	const originState = state;
 	  	console.log(originState, state, action.type);
-	  	if (action.type === INCREAMENT && originState[action.payload]) {
+	  	if (action.type === INCREAMENT && originState[action.payload] !== undefined) {
 	  		originState[action.payload] += 1;
+	  		originState.point -= 1;
 	  	} else if (action.type === DECREAMENT) {
 	  		originState[action.payload] -= 1;
+	  		originState.point += 1;
 	  	}
 	  	return Object.assign({}, state, originState);
 	  default: 

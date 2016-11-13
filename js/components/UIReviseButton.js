@@ -15,11 +15,11 @@ export default class UIReviseButton extends React.Component {
   }
 
   handleMinerClick(e) {
-    this.props.onPlusClick.call(null);
+    this.props.onMinerClick.call(null);
   }
 
   handlePlusClick() {
-    this.props.onMinerClick.call(null);
+    this.props.onPlusClick.call(null);
  }
 
   render() {
