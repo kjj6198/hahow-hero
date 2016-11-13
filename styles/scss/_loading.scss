@@ -1,0 +1,43 @@
+@include block(loading) {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+
+	padding: 1em;
+
+	background-color: #27cc95;
+	color: #fff;
+
+	@include element(message) {
+		margin: 0;
+		text-align: center;
+
+		font-weight: normal;
+	}
+}
+
+@include block(error) {
+	position: fixed;
+	z-index: 100;
+	top: 0;
+	left: 0;
+	right: 0;
+	width: 100%;
+
+	padding: 1em;
+
+	background-color: #ff0065;
+	color: #fff;
+
+	&:empty { display: none; }
+
+	@include element(message) {
+		margin: 0;
+		text-align: center;
+
+		font-weight: normal;
+	}
+}

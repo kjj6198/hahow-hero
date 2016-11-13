@@ -1,0 +1,16 @@
+$breakpoint: (
+	mobile: (15rem 48rem),
+	laptop: (48.01rem 80rem),
+	desktop: (81rem)
+);
+
+@mixin for($device) {
+	@if (not map-has-key($breakpoint, $device)) {
+		@error "unknown key"; 
+	}
+
+	$breakpoints: map-get($breakpoint, $device);
+	@media screen and (min-width: #{nth($breakpoints, 1)}) and (max-width: #{nth($breakpoints, 2)}) {
+		@content;		
+	}
+}

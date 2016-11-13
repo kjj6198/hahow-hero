@@ -21,7 +21,6 @@ export default class HeroList extends React.Component {
         <div className="fake-card">
           <div className="fake-card__image"></div>
           <div className="fake-card__title"></div>
-
         </div>
       )
     }

@@ -17,7 +17,17 @@ export default class HeroProfile extends React.Component {
   }
 
   handleSaveBtnClick(e) {
-    const { reviseAbilityPointRequest, curHeroID, profile } = this.props;
+    const { 
+      reviseAbilityPointRequest, curHeroID, profile,
+      receiveError, 
+    } = this.props;
+    const { point } = profile;
+
+    if (point !== 0 || point > 0) {
+      receiveError('英雄點數必須全部配置完畢才可以儲存！');
+
+      return false;
+    }
     reviseAbilityPointRequest(curHeroID, profile);
   }
 
@@ -35,17 +45,17 @@ export default class HeroProfile extends React.Component {
 
     return (
       <div className="hero-profile">
+        <h4 style={{textAlign: 'center', marginTop: '0'}}>Profile</h4>
         <ul>
           {profileList.map((skill, index) => {
             return (
               <li key={index}>
-                {profile[skill]}
+                {skill + ' : ' + profile[skill]}
                 <UIReviseButton 
                   title={skill}
                   onMinerClick={() => profile[skill] > 0 ? decreament(skill) : 'error'}
                   onPlusClick={() => point > 0 ? increament(skill) : 'error'}
-                />
-                
+                />                
               </li>
             )
           })}
