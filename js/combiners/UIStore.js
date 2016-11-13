@@ -15,9 +15,10 @@ export default function reducer(state = defaultState, action) {
 		  return Object.assign({}, state, { isFetching: false });
 		case RECEIVE_ERROR:
 		  return Object.assign({}, state, { error: action.error });
+		default:
+			state.error = '';
+		  return state;
 	}
-
-	return state;
 }
 
 export const sendRequest = () => ({ type: SEND_REQUEST });

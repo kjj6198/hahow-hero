@@ -13,14 +13,14 @@ export default class HeroList extends React.Component {
   }
 
   renderHeroCard() {
-    const { heros } = this.props;
+    const { heros, curHeroID } = this.props;
     const { sendProfileRequest } = this.props.actions;
 
     return heros
       .map((hero, index) => {
         return <HeroCard
           {...hero}
-          active={heros.currentHeroID === hero.id ? true : false }
+          active={ curHeroID === hero.id ? true : false }
           key={index}
           handleClick={() => sendProfileRequest(hero.id)}
         />

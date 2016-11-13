@@ -6,6 +6,7 @@ export default class HeroCard extends React.Component {
     image: React.PropTypes.string,
     id: React.PropTypes.string,
     handleClick: React.PropTypes.func,
+    active: React.PropTypes.bool,
   };
 
   constructor(props) {
@@ -18,6 +19,7 @@ export default class HeroCard extends React.Component {
   }
 
   render() {
+    const { active } = this.props;
     return (
       <div className="hero-card">
         <img 
@@ -26,7 +28,7 @@ export default class HeroCard extends React.Component {
         />
         
       	<h3 onClick={this.handleClick} className="hero-card__name">
-          {this.props.name}
+          {active === true ? <strong style={{color: '#27cc95'}}>{this.props.name}</strong> : this.props.name}
         </h3>
         
       </div>

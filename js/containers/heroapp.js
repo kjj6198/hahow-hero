@@ -8,6 +8,7 @@ import * as UIActions from '../combiners/UIStore.js';
 
 import HeroList from '../components/HeroList.js';
 import HeroProfile from '../components/HeroProfile.js';
+import ErrorMessage from '../components/ErrorMessage.js';
 
 function filterAction(actions) {
   const result = {};
@@ -38,11 +39,12 @@ class App extends React.Component {
   render() {
     const { heros } = this.props.hero;
     const { profile } = this.props;
-    const { isFetching } = this.props.ui;
+    const { isFetching, error } = this.props.ui;
     return (
       <div>
         { isFetching === true ? <h1>Loading...</h1> : '' }
         <HeroList 
+          curHeroID={this.props.hero.currentHeroID}
           heros={heros} 
           actions={this.props.actions}
         />
@@ -52,6 +54,7 @@ class App extends React.Component {
           curHeroID={this.props.hero.currentHeroID}
           {...this.props.actions}
         />
+        <ErrorMessage error={error} />
       </div>
     );
   }

@@ -60,6 +60,9 @@ export function reviseAbilityPointRequest(id, ability) {
   	})
   	.then((res) => {
   		if(res.status === 200) { dispatch(reviseAbilityPointSuccess(id, ability)); }
+
+  		// Promise don't goto catch when status code === 400 or 404
+  		if(res.status >= 400 && res.status <= 500 ) { dispatch(receiveError('將點數使用完後，才可儲存英雄屬性表！')) }
   	})
   	.then(() => dispatch({ type: REQUEST_COMPLETED }))
   	.catch((error) => dispatch(receiveError(error)))
