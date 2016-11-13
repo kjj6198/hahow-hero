@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "node -r babel-register server.js"
+    "dev": "sass --watch ./styles/scss:./styles/css & node -r babel-register server.js"
   },
   "keywords": [],
   "author": "Kalan <kjj6198@gmail.com>",

@@ -1,0 +1,13 @@
+{
+  "name": "hahow-hero",
+  "description": "",
+  "main": "index.js",
+  "authors": [
+    "Kalan <kjj6198@gmail.com>"
+  ],
+  "license": "ISC",
+  "homepage": "https://github.com/kjj6198/hahow-hero",
+  "dependencies": {
+    "sexy": "^1.1.0"
+  }
+}
